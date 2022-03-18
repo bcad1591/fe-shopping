@@ -8,7 +8,7 @@ export class AutoComplete {
     this.AUTO_COMPLETE_LIST = AUTO_COMPLETE_LIST;
   }
 
-  async requestACKeyword(inputKeyword) {
+  async requestACKeywords(inputKeyword) {
     try {
       const response = await fetch(`${apiURL}?q=${inputKeyword}`);
       const data = await response.json();
@@ -20,7 +20,7 @@ export class AutoComplete {
   }
 
   async renderACKeywords(inputKeyword) {
-    const ACKeywords = await this.requestACKeyword(inputKeyword);
+    const ACKeywords = await this.requestACKeywords(inputKeyword);
     if (!ACKeywords) return;
 
     const ACKeywordsHTML = this.getACKeywordsHTML({ ACKeywords, inputKeyword });
